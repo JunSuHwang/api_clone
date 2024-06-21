@@ -25,7 +25,7 @@ public class UserController {
 
     @Operation(summary = "회원 입력", description = "회원을 입력한다.")
     @PostMapping(value = "/user")
-    public User save(@Parameter(name = "회원아이디", required = true) @RequestParam String uid, @Parameter(name = "회원 이름", required = true) @RequestParam String name) {
+    public User save(@Parameter(name = "uid", description = "회원아이디",required = true) @RequestParam("uid") String uid, @Parameter(name = "name", description = "회원이름",required = true) @RequestParam("name") String name) {
         User user = User.builder()
                 .uid(uid)
                 .name(name)
