@@ -33,7 +33,10 @@ public class UserController {
     @Operation(summary = "회원 단건 조회", description = "userId로 회원을 조회한다")
     @GetMapping(value = "/user/{msrl}")
     public SingleResult<User> findUserById(@Parameter(name = "msrl",description = "회원Id", required = true)
-                                               @PathVariable("msrl") long msrl) {
+                                               @PathVariable("msrl") long msrl,
+                                           @Parameter(name = "lang", description = "언어")
+                                                @RequestParam(value = "lang", defaultValue = "ko") String lang
+                                           ) {
         return responseService.getSingleResult(userJpaRepo.findById(msrl).orElseThrow(CUserNotFoundException::new));
     }
 
