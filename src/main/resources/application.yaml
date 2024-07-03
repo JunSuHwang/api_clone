@@ -11,10 +11,12 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: 'true'
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
   messages:
     basename: i18n/exception
     encoding: UTF-8
+  jwt:
+    secret: govlepe1@$&
 
 springdoc:
   version: '@project.version@'
