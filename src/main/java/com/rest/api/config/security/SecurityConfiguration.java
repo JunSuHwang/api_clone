@@ -37,13 +37,12 @@ public class SecurityConfiguration{
                         authorize
                                 .requestMatchers(HttpMethod.POST, "/*/signin", "/*/signin/**", "/*/signup", "/*/signup/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**").permitAll()
-                                .requestMatchers("/*/users").hasRole("ADMIN")
+                                //.requestMatchers("/*/users").hasRole("ADMIN")
                                 .anyRequest().hasRole("USER")
                 )
                 .exceptionHandling(authenticationManager -> authenticationManager
                         .accessDeniedHandler(new CustomAccessDeniedHandler())
                         .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-                        .accessDeniedHandler(new CustomAccessDeniedHandler())
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

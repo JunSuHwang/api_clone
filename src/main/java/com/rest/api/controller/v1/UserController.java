@@ -28,7 +28,7 @@ public class UserController {
     private final ResponseService responseService; // 결과를 처리할 Service
 
     @Parameters({
-            @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true)
+            @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true, in = ParameterIn.HEADER)
     })
     @Operation(summary = "회원 조회", description = "모든 회원을 조회한다")
     @GetMapping(value = "/users")
@@ -67,7 +67,7 @@ public class UserController {
     }
 
     @Parameters({
-            @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true)
+            @Parameter(name = "X-AUTH-TOKEN", description = "로그인 성공 후 access_token", required = true, in = ParameterIn.HEADER)
     })
     @Operation(summary = "회원 삭제", description = "userId로 회원정보를 삭제한다.")
     @DeleteMapping(value = "/user/{msrl}")
