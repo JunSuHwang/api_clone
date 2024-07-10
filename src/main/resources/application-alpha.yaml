@@ -1,0 +1,23 @@
+# application-alpha.yaml
+logging:
+  level:
+    root: warn
+    com.rest.api: info
+  path: xxxxxxxalpha
+  file:
+    max-history: 7
+spring:
+  config:
+    activate:
+      on-profile: alpha
+  datasource:
+    driver-class-name: xxxxxxxalpha
+    username: xxxxxxxalpha
+    url: xxxxxxxalpha
+  jpa:
+    database-platform: xxxxxxxalpha
+    #show-sql: 'true'
+    #hibernate:
+      #ddl-auto: update
+  url:
+    base: xxxxxxxalpha

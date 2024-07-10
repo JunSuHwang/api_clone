@@ -1,0 +1,20 @@
+# application-local.yaml
+logging:
+  level:
+    root: warn
+    com.rest.api: debug
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    url: jdbc:h2:tcp://localhost/~/test
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+  url:
+    base: http://localhost:8080
