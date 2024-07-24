@@ -1,9 +1,11 @@
 # application-alpha.yaml
+server:
+  shutdown: graceful
 logging:
   level:
     root: warn
     com.rest.api: info
-  path: xxxxxxxalpha
+  path: /home/wnstn/springapi/log/api.log
   file:
     max-history: 7
 spring:
@@ -11,13 +13,18 @@ spring:
     activate:
       on-profile: alpha
   datasource:
-    driver-class-name: xxxxxxxalpha
-    username: xxxxxxxalpha
-    url: xxxxxxxalpha
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: wnstn
+    password: abcd1234
+    url: jdbc:mysql://localhost:36091/springapi?useUnicode=true&autoReconnect=true&autoReconnect=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
   jpa:
-    database-platform: xxxxxxxalpha
-    #show-sql: 'true'
-    #hibernate:
-      #ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: 'true'
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      format_sql: true
   url:
-    base: xxxxxxxalpha
+    base: 127.0.0.1
+  lifecycle:
+    timeout-per-shutdown-phase: "30s"

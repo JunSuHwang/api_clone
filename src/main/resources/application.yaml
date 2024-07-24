@@ -6,22 +6,11 @@ spring:
       - key
   freemarker:
     suffix: .ftl
-  datasource:
-    driver-class-name: org.h2.Driver
-    username: sa
-    url: jdbc:h2:tcp://localhost/~/test
   application:
     name: api
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: 'true'
-    hibernate:
-      ddl-auto: update
   messages:
     basename: i18n/exception
     encoding: UTF-8
-  url:
-    base: http://localhost:8080
 
 springdoc:
   version: '@project.version@'

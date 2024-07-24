@@ -36,7 +36,7 @@ public class SecurityConfiguration{
                 .authorizeHttpRequests(authorize ->
                         authorize
                                 .requestMatchers("/*/signin", "/*/signin/**", "/*/signup", "/*/signup/**", "/social/**").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/helloworld/**", "/exception/**", "/actuator/health").permitAll()
                                 //.requestMatchers("/*/users").hasRole("ADMIN")
                                 .anyRequest().hasRole("USER")
                 )
