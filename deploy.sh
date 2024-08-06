@@ -36,7 +36,7 @@ for server in $SERVERS; do
     fi
     echo "Server $PORT Starting..."
     # 새로운 서버 실행
-    ssh -p 8888 -i $PEM $SERVER_ID@$server "nohup /usr/lib/java/jdk-22.0.1/bin/java -jar -Dserver.port=$PORT -Dspring.profiles.active=$PROFILE $JAVA_OPTS $DEPLOY_PATH/$PROJECT < /dev/null > std.out 2> std.err &"
+    ssh -p 8888 -i $PEM $SERVER_ID@$server "nohup java -jar -Dserver.port=$PORT -Dspring.profiles.active=$PROFILE $JAVA_OPTS $DEPLOY_PATH/$PROJECT < /dev/null > std.out 2> std.err &"
     # 새롭게 실행한 서버의 health check
     echo "Health check $PORT"
     for retry in {1..10}

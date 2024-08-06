@@ -11,7 +11,7 @@ logging:
 spring:
   config:
     activate:
-      on-profile: alpha
+      on-profile: alphaprofile
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: wnstn

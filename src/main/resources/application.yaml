@@ -1,9 +1,14 @@
 # application.yaml
 spring:
   profiles:
-    active: local
-    include:
-      - key
+    group:
+      local: localprofile, key, common
+      alpha: alphaprofile, key, common
+---
+spring:
+  config:
+    activate:
+      on-profile: common
   freemarker:
     suffix: .ftl
   application:
@@ -11,7 +16,6 @@ spring:
   messages:
     basename: i18n/exception
     encoding: UTF-8
-
 springdoc:
   version: '@project.version@'
   api-docs:

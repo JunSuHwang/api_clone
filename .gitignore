@@ -36,3 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 /src/main/resources/application-key.yaml
+/deploy_alpha.sh
+/server_alpha.list
+/src/test/java/com/rest/api/controller/v1/UserControllerTest.java
