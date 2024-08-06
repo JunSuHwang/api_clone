@@ -25,8 +25,8 @@ public class SocialController {
     @Value("${spring.url.base}")
     private String baseUrl;
 
-    @Value("${social.kakao.client_id}")
-    private String kakaoClientId;
+    // @Value("${social.kakao.client_id}")
+    //private String kakaoClientId;
 
     @Value("${social.kakao.redirect}")
     private String kakaoRedirect;
@@ -39,7 +39,8 @@ public class SocialController {
 
         StringBuilder loginUrl = new StringBuilder()
                 .append(env.getProperty("social.kakao.url.login"))
-                .append("?client_id=").append(kakaoClientId)
+                //.append("?client_id=").append(kakaoClientId)
+                .append("?client_id=").append(env.getProperty("social.kakao.client_id"))
                 .append("&response_type=code")
                 .append("&redirect_uri=").append(baseUrl).append(kakaoRedirect);
         mav.addObject("loginUrl", loginUrl);
