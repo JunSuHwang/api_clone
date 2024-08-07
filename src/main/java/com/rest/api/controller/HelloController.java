@@ -24,7 +24,7 @@ public class HelloController {
     @ResponseBody
     public Hello helloworldJson() {
         Hello hello = new Hello();
-        hello.message = "helloworld";
+        hello.message = "helloworld nice to meet you";
         return hello;
     }
 
@@ -33,7 +33,7 @@ public class HelloController {
      */
     @GetMapping(value = "/helloworld/page")
     public String helloworld() {
-        return "helloworld nice to meet you";
+        return "helloworld";
     }
 
     @GetMapping(value = "/helloworld/long-process")
