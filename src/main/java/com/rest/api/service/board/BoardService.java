@@ -1,8 +1,10 @@
 package com.rest.api.service.board;
 
+import com.rest.api.advice.exception.CForbiddenWordException;
 import com.rest.api.advice.exception.CNotOwnerException;
 import com.rest.api.advice.exception.CResourceNotExistException;
 import com.rest.api.advice.exception.CUserNotFoundException;
+import com.rest.api.annotation.ForbiddenWordCheck;
 import com.rest.api.common.CacheKey;
 import com.rest.api.entity.User;
 import com.rest.api.entity.board.Board;
@@ -18,6 +20,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,6 +53,7 @@ public class BoardService {
 
     // 게시물을 등록합니다. 게시물의 회원UID가 조회되지 않으면 CUserNotFoundException 처리
     @CacheEvict(value = CacheKey.POSTS, key = "#p1")
+    @ForbiddenWordCheck
     public Post writePost(String uid, String boardName, ParamsPost paramsPost) {
         Board board = findBoard(boardName);
         Post post = new Post(userJpaRepo.findByUid(uid).orElseThrow(CUserNotFoundException::new), board, paramsPost.getAuthor(), paramsPost.getTitle(), paramsPost.getContent());
@@ -58,6 +62,7 @@ public class BoardService {
 
     // 게시물을 수정합니다. 게시물 등록자와 로그인 회원정보가 틀리면 CNotOwnerException 처리
     // @CachePut(value = CacheKey.POST, key = "#p0") 갱신된 정보만 캐시할 경우에만 사용!
+    @ForbiddenWordCheck
     public Post updatePost(long postId, String uid, ParamsPost paramsPost) {
         Post post = getPost(postId);
         User user = post.getUser();
